@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'module_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
                 onTap: () => _navigateToModulePage(context, 'Modul 3', 'Kerucut'),
               ),
               const Spacer(),
-              BottomNavBar(),
+              const BottomNavBar(),
             ],
           ),
         ),
@@ -92,12 +92,12 @@ class ModuleCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const ModuleCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.color,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +155,7 @@ class ModuleCard extends StatelessWidget {
 }
 
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -192,12 +192,12 @@ class BottomNavItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const BottomNavItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     required this.isActive,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ void main() {
 }
 
 class BelajarYukApp extends StatelessWidget {
-  const BelajarYukApp({Key? key}) : super(key: key);
+  const BelajarYukApp({super.key});
 
   @override
   Widget build(BuildContext context) {

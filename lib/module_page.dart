@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quiz_page.dart';
 
 class ModulePage extends StatelessWidget {
   final String title;
@@ -46,8 +47,9 @@ class ModulePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Ut tempor elit vitae dapibus varius. Vivamus nec dignissim mi. Fusce malesuada nisl eu mi vehicula, at egestas est vehicula. Sed id est ac orci elementum cursus. Morbi fringilla nec nisl in vestibulum. Nullam tincidunt, orci eu scelerisque cursus, nisl odio consequat elit, id ultricies nisl odio in nulla. Aliquam erat volutpat. Aenean ultrices augue non purus ultricies, nec suscipit urna imperdiet. Suspendisse velit in ante auctor efficitur. Etiam vel dui a leo aliquet facilisis in ac metus. Fusce at amet felis sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus in sodales sapien. Pellentesque venenatis augue felis, a fermentum lectus congue non.',
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...',
                       style: TextStyle(fontSize: 16),
+                      softWrap: true,
                     ),
                   ],
                 ),
@@ -55,16 +57,19 @@ class ModulePage extends StatelessWidget {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Quiz functionality not implemented')),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuizPage(title: title, subtitle: subtitle),
+                    ),
                   );
                 },
-                child: const Text('Quiz'),
                 style: ElevatedButton.styleFrom(
-                  // primary: Colors.blue,
+                  backgroundColor: Colors.blue,
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
+                child: const Text('Start Quiz'),
               ),
             ],
           ),
