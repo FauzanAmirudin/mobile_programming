@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'quiz_page.dart';
 
-class ModulePage extends StatelessWidget {
+class Module1Page extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const ModulePage({Key? key, required this.title, required this.subtitle}) : super(key: key);
+  const Module1Page({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class ModulePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...',
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit..dfdfhdhdhdfh.',
                       style: TextStyle(fontSize: 16),
                       softWrap: true,
                     ),
@@ -55,33 +55,39 @@ class ModulePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QuizPage(title: title, subtitle: subtitle),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            QuizPage(title: title, subtitle: subtitle),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
+                    textStyle: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  child: const Text('Start Quiz'),
                 ),
-                child: const Text('Start Quiz'),
-              ),
+              )
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
 
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +124,12 @@ class BottomNavItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const BottomNavItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     required this.isActive,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

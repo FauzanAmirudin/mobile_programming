@@ -5,9 +5,10 @@ class QuizPage extends StatefulWidget {
   final String title;
   final String subtitle;
 
-  const QuizPage({Key? key, required this.title, required this.subtitle}) : super(key: key);
+  const QuizPage({super.key, required this.title, required this.subtitle});
 
   @override
+  // ignore: library_private_types_in_public_api
   _QuizPageState createState() => _QuizPageState();
 }
 
@@ -85,37 +86,37 @@ class _QuizPageState extends State<QuizPage> {
               'Quiz ${currentQuestionIndex + 1}',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue[300]),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               currentQuestion['question'],
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ...List.generate(
               currentQuestion['options'].length,
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: ElevatedButton(
                   onPressed: () => _selectAnswer(index),
-                  child: Text(currentQuestion['options'][index]),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: currentQuestion['userAnswer'] == index ? Colors.green : Colors.blue,
-                    minimumSize: Size(double.infinity, 50),
+                    minimumSize: const Size(double.infinity, 50),
                   ),
+                  child: Text(currentQuestion['options'][index]),
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Align(
               alignment: Alignment.bottomRight,
               child: ElevatedButton(
                 onPressed: currentQuestion['userAnswer'] != null ? _nextQuestion : null,
-                child: Text(currentQuestionIndex == questions.length - 1 ? 'Finish' : 'Next'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
+                child: Text(currentQuestionIndex == questions.length - 1 ? 'Finish' : 'Next'),
               ),
             ),
           ],

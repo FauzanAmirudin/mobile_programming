@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'module_page.dart';
+import 'module1_page.dart';
+import 'module2_page.dart';
+import 'module3_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -50,21 +52,21 @@ class HomePage extends StatelessWidget {
                 title: 'Modul 1',
                 subtitle: 'Kubus',
                 color: Colors.lightBlue[200]!,
-                onTap: () => _navigateToModulePage(context, 'Modul 1', 'Kubus'),
+                onTap: () => _navigateToModulePage(context, 1, 'Kubus'),
               ),
               const SizedBox(height: 16),
               ModuleCard(
                 title: 'Modul 2',
                 subtitle: 'Balok',
                 color: Colors.blue,
-                onTap: () => _navigateToModulePage(context, 'Modul 2', 'Balok'),
+                onTap: () => _navigateToModulePage(context, 2, 'Balok'),
               ),
               const SizedBox(height: 16),
               ModuleCard(
                 title: 'Modul 3',
                 subtitle: 'Kerucut',
                 color: Colors.blue,
-                onTap: () => _navigateToModulePage(context, 'Modul 3', 'Kerucut'),
+                onTap: () => _navigateToModulePage(context, 3, 'Kerucut'),
               ),
               const Spacer(),
               const BottomNavBar(),
@@ -75,12 +77,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _navigateToModulePage(BuildContext context, String title, String subtitle) {
+  void _navigateToModulePage(BuildContext context, int moduleNumber, String subtitle) {
+    Widget page;
+    switch (moduleNumber) {
+      case 1:
+        page = Module1Page(title: 'Modul 1', subtitle: subtitle);
+        break;
+      case 2:
+        page = Module2Page(title: 'Modul 2', subtitle: subtitle);
+        break;
+      case 3:
+        page = Module3Page(title: 'Modul 3', subtitle: subtitle);
+        break;
+      default:
+        page = Module1Page(title: 'Modul 1', subtitle: subtitle);
+    }
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => ModulePage(title: title, subtitle: subtitle),
-      ),
+      MaterialPageRoute(builder: (context) => page),
     );
   }
 }

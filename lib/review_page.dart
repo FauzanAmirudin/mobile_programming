@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ReviewPage extends StatelessWidget {
   final List<Map<String, dynamic>> questions;
 
-  const ReviewPage({Key? key, required this.questions}) : super(key: key);
+  const ReviewPage({super.key, required this.questions});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class ReviewPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz Review'),
+        title: const Text('Quiz Review'),
         backgroundColor: Colors.blue[300],
       ),
       body: SingleChildScrollView(
@@ -24,7 +24,7 @@ class ReviewPage extends StatelessWidget {
                 'Your Score: $correctAnswers / ${questions.length}',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue[300]),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ...questions.asMap().entries.map((entry) {
                 int index = entry.key;
                 var question = entry.value;
@@ -37,9 +37,9 @@ class ReviewPage extends StatelessWidget {
                     children: [
                       Text(
                         'Question ${index + 1}: ${question['question']}',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         'Your answer: ${question['options'][question['userAnswer']]}',
                         style: TextStyle(
@@ -50,13 +50,13 @@ class ReviewPage extends StatelessWidget {
                       if (!isCorrect)
                         Text(
                           'Correct answer: ${question['options'][question['correctAnswer']]}',
-                          style: TextStyle(fontSize: 16, color: Colors.green),
+                          style: const TextStyle(fontSize: 16, color: Colors.green),
                         ),
                     ],
                   ),
                 );
-              }).toList(),
-              SizedBox(height: 20),
+              }),
+              const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -65,9 +65,9 @@ class ReviewPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   ),
-                  child: Text('Back to Home'),
+                  child: const Text('Back to Home'),
                 ),
               ),
             ],
