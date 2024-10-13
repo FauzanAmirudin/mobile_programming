@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'module1_page.dart';
+import 'main_quiz_page.dart';
 import 'quiz_page.dart';
+
 
 class Module2Page extends StatelessWidget {
   final String title;
@@ -83,3 +84,5 @@ class Module2Page extends StatelessWidget {
     );
   }
 }
+
+

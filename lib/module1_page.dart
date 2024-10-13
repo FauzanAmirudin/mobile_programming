@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/home_page.dart';
 import 'quiz_page.dart';
+import 'main_quiz_page.dart';
 
 class Module1Page extends StatelessWidget {
   final String title;
@@ -99,7 +101,11 @@ class BottomNavBar extends StatelessWidget {
           label: 'Home',
           isActive: false,
           onTap: () {
-            Navigator.of(context).pop();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ));
           },
         ),
         BottomNavItem(
@@ -107,8 +113,12 @@ class BottomNavBar extends StatelessWidget {
           label: 'Quiz',
           isActive: false,
           onTap: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Quiz page not implemented')),
+            // Navigasi ke halaman QuizHomePage
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const QuizHomePage(),
+              ),
             );
           },
         ),

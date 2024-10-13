@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'module1_page.dart';
-import 'module2_page.dart';
-import 'module3_page.dart';
-import 'main_quiz_page.dart';
+import 'home_page.dart';
+import 'quiz_page.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class QuizHomePage extends StatelessWidget {
+  const QuizHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +16,11 @@ class HomePage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.home, color: Colors.blue[300], size: 30),
+                  Icon(Icons.library_books_rounded,
+                      color: Colors.blue[300], size: 30),
                   const SizedBox(width: 8),
                   Text(
-                    'BelajarYuk',
+                    'QuizYuk',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -39,7 +38,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
-                  'Modul Pembelajaran',
+                  'Quiz Pembelajaran',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -49,25 +48,25 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              ModuleCard(
-                title: 'Modul 1',
+              QuizCard(
+                title: 'Quiz 1',
                 subtitle: 'Kubus',
                 color: Colors.lightBlue[200]!,
-                onTap: () => _navigateToModulePage(context, 1, 'Kubus'),
+                onTap: () => _navigateToQuizPage(context, 'Quiz 1', 'Kubus'),
               ),
               const SizedBox(height: 16),
-              ModuleCard(
-                title: 'Modul 2',
+              QuizCard(
+                title: 'Quiz 2',
                 subtitle: 'Balok',
                 color: Colors.blue,
-                onTap: () => _navigateToModulePage(context, 2, 'Balok'),
+                onTap: () => _navigateToQuizPage(context, 'Quiz 2', 'Balok'),
               ),
               const SizedBox(height: 16),
-              ModuleCard(
-                title: 'Modul 3',
+              QuizCard(
+                title: 'Quiz 3',
                 subtitle: 'Kerucut',
                 color: Colors.blue,
-                onTap: () => _navigateToModulePage(context, 3, 'Kerucut'),
+                onTap: () => _navigateToQuizPage(context, 'Quiz 3', 'Kerucut'),
               ),
               const Spacer(),
               const BottomNavBar(),
@@ -78,35 +77,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _navigateToModulePage(BuildContext context, int moduleNumber, String subtitle) {
-    Widget page;
-    switch (moduleNumber) {
-      case 1:
-        page = Module1Page(title: 'Modul 1', subtitle: subtitle);
-        break;
-      case 2:
-        page = Module2Page(title: 'Modul 2', subtitle: subtitle);
-        break;
-      case 3:
-        page = Module3Page(title: 'Modul 3', subtitle: subtitle);
-        break;
-      default:
-        page = Module1Page(title: 'Modul 1', subtitle: subtitle);
-    }
+  void _navigateToQuizPage(
+      BuildContext context, String title, String subtitle) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => page),
+      MaterialPageRoute(
+        builder: (context) => QuizPage(title: title, subtitle: subtitle),
+      ),
     );
   }
 }
 
-class ModuleCard extends StatelessWidget {
+class QuizCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final Color color;
   final VoidCallback onTap;
 
-  const ModuleCard({
+  const QuizCard({
     super.key,
     required this.title,
     required this.subtitle,
@@ -180,15 +168,19 @@ class BottomNavBar extends StatelessWidget {
         BottomNavItem(
           icon: Icons.home,
           label: 'Home',
-          isActive: true,
+          isActive: false,
           onTap: () {
-            // Already on home page
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ));
           },
         ),
         BottomNavItem(
           icon: Icons.library_books_rounded,
           label: 'Quiz',
-          isActive: false,
+          isActive: true,
           onTap: () {
             // Navigasi ke halaman QuizHomePage
             Navigator.push(
